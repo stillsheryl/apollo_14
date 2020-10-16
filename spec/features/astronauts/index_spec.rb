@@ -32,6 +32,27 @@ describe "As a visitor," do
       expect(page).to have_content("#{astronaut_3.age}")
       expect(page).to have_content("#{astronaut_3.job}")
     end
+
+    it "Shows the Average Age of all astronauts" do
+      astronaut_1 = Astronaut.create!(
+                                name: "Neil Armstrong",
+                                age: 37,
+                                job: "Commander"
+                              )
+      astronaut_2 = Astronaut.create!(
+                                name: "Bob Hope",
+                                age: 32,
+                                job: "Mission Control"
+                              )
+      astronaut_3 = Astronaut.create!(
+                                name: "Shana Young",
+                                age: 40,
+                                job: "Engineer"
+                              )
+      visit '/astronauts'
+
+      expect(page).to have_content("Average Age: 36.3")
+    end
   end
 
 end
