@@ -84,7 +84,20 @@ describe "As a visitor," do
                               title: "Gemini 7",
                               time_in_space: 579276
                               )
+
       visit '/astronauts'
+      astronaut_mission_1 = (
+                        astronaut_id: astronaut_1.id,
+                        mission_id: mission_1.id
+                        )
+      astronaut_mission_2 = (
+                        astronaut_id: astronaut_2.id,
+                        mission_id: mission_2.id
+                        )
+      astronaut_mission_2 = (
+                        astronaut_id: astronaut_3.id,
+                        mission_id: mission_3.id
+                        )
 
       expect(page).to have_content('Apollo 13')
       expect(page).to have_content('Capricorn 4')
