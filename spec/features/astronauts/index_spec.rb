@@ -72,32 +72,39 @@ describe "As a visitor," do
                                  age: 40,
                                  job: "Engineer"
                               )
-      mission_1 = Mission.create!(
+      mission_1 = Mission.create!({
                               title: "Apollo 13",
                       time_in_space: 5436
-                              )
-      mission_2 = Mission.create!(
+                              })
+      mission_2 = Mission.create!({
                               title: "Capricorn 4",
                       time_in_space: 25773
-                              )
-      mission_3 = Mission.create!(
+                              })
+      mission_3 = Mission.create!({
                               title: "Gemini 7",
                               time_in_space: 579276
-                              )
-
+                              })
+      AstronautMission.create!(
+                    astronaut_id: astronaut_1.id,
+                    mission_id: mission_1.id
+                          )
+      AstronautMission.create!(
+                  astronaut_id: astronaut_1.id,
+                    mission_id: mission_2.id
+                          )
+      AstronautMission.create!(
+                    astronaut_id: astronaut_2.id,
+                    mission_id: mission_1.id
+                          )
+      AstronautMission.create!(
+                  astronaut_id: astronaut_3.id,
+                    mission_id: mission_2.id
+                          )
+      AstronautMission.create!(
+                  astronaut_id: astronaut_3.id,
+                    mission_id: mission_3.id
+                          )
       visit '/astronauts'
-      astronaut_mission_1 = (
-                        astronaut_id: astronaut_1.id,
-                        mission_id: mission_1.id
-                        )
-      astronaut_mission_2 = (
-                        astronaut_id: astronaut_2.id,
-                        mission_id: mission_2.id
-                        )
-      astronaut_mission_2 = (
-                        astronaut_id: astronaut_3.id,
-                        mission_id: mission_3.id
-                        )
 
       expect(page).to have_content('Apollo 13')
       expect(page).to have_content('Capricorn 4')

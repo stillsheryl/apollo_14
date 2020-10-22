@@ -5,6 +5,15 @@ class Astronaut < ApplicationRecord
   has_many :missions, through: :astronaut_missions
 
   def self.average_age
-    Astronaut.average(:age).round(1)
+    self.all.average(:age)
   end
+
+  def missions_by_astronaut
+    self.missions.pluck(:title)
+  end
+
+  def time_in_space
+    self.missions.sum(:time_in_space)
+  end
+
 end
