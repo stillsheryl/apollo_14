@@ -9,7 +9,7 @@ class Astronaut < ApplicationRecord
   end
 
   def missions_by_astronaut
-    self.missions.pluck(:title)
+    self.missions.order(:title).pluck(:title)
   end
 
   def time_in_space

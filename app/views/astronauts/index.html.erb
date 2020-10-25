@@ -6,11 +6,12 @@
   <h3>Name: <%= astronaut.name %></h3>
   <p>Age: <%= astronaut.age %></p>
   <p>Role: <%= astronaut.job %></p>
+  <p>Total Time in Space: <%= astronaut.time_in_space %> days</p>
 
   <p>Missions:</p>
-  <ul>
+  <ul class="missions">
     <% astronaut.missions_by_astronaut.each do |mission| %>
-      <li><%= p mission %></li>
+      <li class="astro-<%= astronaut.id %>"><%= p mission %></li>
     <% end %>
   </ul>
 <% end %>
