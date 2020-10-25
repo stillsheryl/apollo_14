@@ -106,9 +106,18 @@ describe "As a visitor," do
                           )
       visit '/astronauts'
 
-      expect(page).to have_content('Apollo 13')
-      expect(page).to have_content('Capricorn 4')
-      expect(page).to have_content('Gemini 7')
+      within all(".astro-#{astronaut_1.id}")[0] do
+        expect(page).to have_content('Apollo 13')
+      end
+      within all(".astro-#{astronaut_1.id}")[1] do
+        expect(page).to have_content('Capricorn 4')
+      end
+      within all(".astro-#{astronaut_3.id}")[0] do
+        expect(page).to have_content('Capricorn 4')
+      end
+      within all(".astro-#{astronaut_3.id}")[1] do
+        expect(page).to have_content('Gemini 7')
+      end
     end
   end
 
